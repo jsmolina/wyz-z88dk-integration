@@ -39,11 +39,11 @@ void main()
    //printf("%cWYZ Tracker example\n",12);
 
    // Load the tracker file
-   ay_wyz_init(&mysong);
+   ay_wyz_init(NULL);
    // Setup the effects
    ay_wyz_effect_init(&myeffects);
    // Play song 1 within the  file
-   ay_wyz_start(0);
+   //ay_wyz_start(0);
 
    // Setup interrupt
    setup_int();
