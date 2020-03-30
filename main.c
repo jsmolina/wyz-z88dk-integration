@@ -1,4 +1,3 @@
-// zcc +zx main.c sham.mus.asm effects.asm -create-app
 // zcc +zx -v -startup=31 -DWFRAMES=3 -clib=sdcc_iy main.c sham.mus.asm effects.asm -create-app
 #include <sound/aywyz.h>
 #include <im2.h>
@@ -43,7 +42,7 @@ void main()
    // Setup the effects
    ay_wyz_effect_init(&myeffects);
    // Play song 1 within the  file
-   ay_wyz_start(0);
+   //ay_wyz_start(0);
 
    // Setup interrupt
    setup_int();
@@ -54,23 +53,28 @@ void main()
       if(in_key_pressed(IN_KEY_SCANCODE_1)) {
         zx_border(INK_BLUE);
           ay_wyz_start_effect(3, 0);
+          in_wait_nokey();
+          zx_border(INK_BLACK);
       } else if(in_key_pressed(IN_KEY_SCANCODE_2)) {
         zx_border(INK_BLUE);
           ay_wyz_start_effect(3, 1);
+          in_wait_nokey();
+          zx_border(INK_BLACK);
       } else if(in_key_pressed(IN_KEY_SCANCODE_3)) {
         zx_border(INK_BLUE);
           ay_wyz_start_effect(4, 2);
-      } else if(in_key_pressed(IN_KEY_SCANCODE_4)) {
-        zx_border(INK_BLUE);
-          ay_wyz_start_effect(4, 3);
+          in_wait_nokey();
+          zx_border(INK_BLACK);
       }else if(in_key_pressed(IN_KEY_SCANCODE_5)) {
         zx_border(INK_RED);
           ay_wyz_stop();
+          in_wait_nokey();
+          zx_border(INK_BLACK);
       }else if(in_key_pressed(IN_KEY_SCANCODE_6)) {
         zx_border(INK_GREEN);
           ay_wyz_start(0);
-      }  else {
-        zx_border(INK_BLACK);
+          in_wait_nokey();
+          zx_border(INK_BLACK);
       }
    }
 }
