@@ -39,11 +39,11 @@ void main()
    //printf("%cWYZ Tracker example\n",12);
 
    // Load the tracker file
-   ay_wyz_init(NULL);
+   ay_wyz_init(&mysong);
    // Setup the effects
    ay_wyz_effect_init(&myeffects);
    // Play song 1 within the  file
-   //ay_wyz_start(0);
+   ay_wyz_start(0);
 
    // Setup interrupt
    setup_int();
@@ -63,7 +63,13 @@ void main()
       } else if(in_key_pressed(IN_KEY_SCANCODE_4)) {
         zx_border(INK_BLUE);
           ay_wyz_start_effect(4, 3);
-      } else {
+      }else if(in_key_pressed(IN_KEY_SCANCODE_5)) {
+        zx_border(INK_RED);
+          ay_wyz_stop();
+      }else if(in_key_pressed(IN_KEY_SCANCODE_6)) {
+        zx_border(INK_GREEN);
+          ay_wyz_start(0);
+      }  else {
         zx_border(INK_BLACK);
       }
    }
